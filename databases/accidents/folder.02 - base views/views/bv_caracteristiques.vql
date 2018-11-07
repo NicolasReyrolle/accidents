@@ -67,5 +67,5 @@ CREATE OR REPLACE TABLE bv_caracteristiques I18N us_pst (
         )
         WRAPPER (df ds_accidents_caracteristiques)
     )
-    DECLARE CACHE INDEX uk_caracteristiques UNIQUE  ON (num_acc);
+    DECLARE CACHE INDEX uk_caracteristiques ON (num_acc);
 

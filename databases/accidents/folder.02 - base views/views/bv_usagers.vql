@@ -17,7 +17,7 @@
     );
 
 CREATE OR REPLACE TABLE bv_usagers I18N us_pst (
-        num_acc:text, 
+        num_acc:text (sourcetypesize = '12', sourcetypeid = '1'), 
         place:text, 
         catu:text, 
         grav:text, 
@@ -28,7 +28,7 @@ CREATE OR REPLACE TABLE bv_usagers I18N us_pst (
         actp:text, 
         etatp:text, 
         an_nais:text, 
-        num_veh:text
+        num_veh:text (sourcetypesize = '3', sourcetypeid = '1')
     )
     FOLDER = '/02 - base views'
     CACHE FULL
@@ -53,5 +53,6 @@ CREATE OR REPLACE TABLE bv_usagers I18N us_pst (
         OUTPUTLIST (actp, an_nais, catu, etatp, grav, locp, num_acc, num_veh, place, secu, sexe, trajet
         )
         WRAPPER (df bv_accidents_usagers)
-    );
+    )
+    DECLARE CACHE INDEX idx_bv_usagers_num_acc ON (num_acc);
 

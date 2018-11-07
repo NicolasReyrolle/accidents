@@ -72,5 +72,6 @@ CREATE OR REPLACE TABLE bv_lieux I18N us_pst (
         OUTPUTLIST (catr, circ, env1, infra, larrout, lartpc, nbv, num_acc, plan, pr, pr1, prof, situ, surf, v1, v2, voie, vosp
         )
         WRAPPER (df bv_lieux)
-    );
+    )
+    DECLARE CACHE INDEX uk_lieux UNIQUE  ON (num_acc);
 
