@@ -1,0 +1,28 @@
+﻿CREATE OR REPLACE WRAPPER DF bv_categorie_usager
+    FOLDER = '/02 - base views'
+    DATASOURCENAME=ds_accidents_categorie_usager
+    OUTPUTSCHEMA (
+        code = 'code' (OPT),
+        description = 'description' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_categorie_usager I18N us_pst (
+        code:text, 
+        description:text
+    )
+    FOLDER = '/02 - base views'
+    PRIMARY KEY ( 'code' )
+    CACHE OFF
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_categorie_usager(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD code (=,in) OPT ANY
+             ADD description (=,in) OPT ANY
+        )
+        OUTPUTLIST (code, description
+        )
+        WRAPPER (df bv_categorie_usager)
+    );
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE DATABASE accidents 'French road accident database, from https://www.data.gouv.fr/fr/datasets/base-de-donnees-accidents-corporels-de-la-circulation/';
+
+ALTER DATABASE accidents
+  CHARSET DEFAULT;
+

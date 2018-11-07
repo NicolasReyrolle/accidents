@@ -1,0 +1,71 @@
+﻿CREATE OR REPLACE WRAPPER DF ds_accidents_caracteristiques
+    FOLDER = '/02 - base views'
+    DATASOURCENAME=ds_accidents_caracteristiques
+    OUTPUTSCHEMA (
+        num_acc = 'Num_Acc' (OPT),
+        an = 'an' (OPT),
+        mois = 'mois' (OPT),
+        jour = 'jour' (OPT),
+        hrmn = 'hrmn' (OPT),
+        lum = 'lum' (OPT),
+        agg = 'agg' (OPT),
+        int = 'int' (OPT),
+        atm = 'atm' (OPT),
+        col = 'col' (OPT),
+        com = 'com' (OPT),
+        adr = 'adr' (OPT),
+        gps = 'gps' (OPT),
+        lat = 'lat' (OPT),
+        long = 'long' (OPT),
+        dep = 'dep' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_caracteristiques I18N us_pst (
+        num_acc:text, 
+        an:text, 
+        mois:text, 
+        jour:text, 
+        hrmn:text, 
+        lum:text, 
+        agg:text, 
+        int:text, 
+        atm:text, 
+        col:text, 
+        com:text, 
+        adr:text, 
+        gps:text, 
+        lat:text, 
+        long:text, 
+        dep:text
+    )
+    FOLDER = '/02 - base views'
+    PRIMARY KEY ( 'num_acc' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD ds_accidents_caracteristiques(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD num_acc (=,in) OPT ANY
+             ADD an (=,in) OPT ANY
+             ADD mois (=,in) OPT ANY
+             ADD jour (=,in) OPT ANY
+             ADD hrmn (=,in) OPT ANY
+             ADD lum (=,in) OPT ANY
+             ADD agg (=,in) OPT ANY
+             ADD int (=,in) OPT ANY
+             ADD atm (=,in) OPT ANY
+             ADD col (=,in) OPT ANY
+             ADD com (=,in) OPT ANY
+             ADD adr (=,in) OPT ANY
+             ADD gps (=,in) OPT ANY
+             ADD lat (=,in) OPT ANY
+             ADD long (=,in) OPT ANY
+             ADD dep (=,in) OPT ANY
+        )
+        OUTPUTLIST (adr, agg, an, atm, col, com, dep, gps, hrmn, int, jour, lat, long, lum, mois, num_acc
+        )
+        WRAPPER (df ds_accidents_caracteristiques)
+    )
+    DECLARE CACHE INDEX uk_caracteristiques UNIQUE  ON (num_acc);
+

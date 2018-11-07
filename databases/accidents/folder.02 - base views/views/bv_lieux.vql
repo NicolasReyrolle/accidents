@@ -1,0 +1,76 @@
+﻿CREATE OR REPLACE WRAPPER DF bv_lieux
+    FOLDER = '/02 - base views'
+    DATASOURCENAME=ds_accidents_lieux
+    OUTPUTSCHEMA (
+        num_acc = 'Num_Acc' (OPT),
+        catr = 'catr' (OPT),
+        voie = 'voie' (OPT),
+        v1 = 'v1' (OPT),
+        v2 = 'v2' (OPT),
+        circ = 'circ' (OPT),
+        nbv = 'nbv' (OPT),
+        pr = 'pr' (OPT),
+        pr1 = 'pr1' (OPT),
+        vosp = 'vosp' (OPT),
+        prof = 'prof' (OPT),
+        plan = 'plan' (OPT),
+        lartpc = 'lartpc' (OPT),
+        larrout = 'larrout' (OPT),
+        surf = 'surf' (OPT),
+        infra = 'infra' (OPT),
+        situ = 'situ' (OPT),
+        env1 = 'env1' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_lieux I18N us_pst (
+        num_acc:text, 
+        catr:text, 
+        voie:text, 
+        v1:text, 
+        v2:text, 
+        circ:text, 
+        nbv:text, 
+        pr:text, 
+        pr1:text, 
+        vosp:text, 
+        prof:text, 
+        plan:text, 
+        lartpc:text, 
+        larrout:text, 
+        surf:text, 
+        infra:text, 
+        situ:text, 
+        env1:text
+    )
+    FOLDER = '/02 - base views'
+    PRIMARY KEY ( 'num_acc' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD bv_lieux(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD num_acc (=,in) OPT ANY
+             ADD catr (=,in) OPT ANY
+             ADD voie (=,in) OPT ANY
+             ADD v1 (=,in) OPT ANY
+             ADD v2 (=,in) OPT ANY
+             ADD circ (=,in) OPT ANY
+             ADD nbv (=,in) OPT ANY
+             ADD pr (=,in) OPT ANY
+             ADD pr1 (=,in) OPT ANY
+             ADD vosp (=,in) OPT ANY
+             ADD prof (=,in) OPT ANY
+             ADD plan (=,in) OPT ANY
+             ADD lartpc (=,in) OPT ANY
+             ADD larrout (=,in) OPT ANY
+             ADD surf (=,in) OPT ANY
+             ADD infra (=,in) OPT ANY
+             ADD situ (=,in) OPT ANY
+             ADD env1 (=,in) OPT ANY
+        )
+        OUTPUTLIST (catr, circ, env1, infra, larrout, lartpc, nbv, num_acc, plan, pr, pr1, prof, situ, surf, v1, v2, voie, vosp
+        )
+        WRAPPER (df bv_lieux)
+    );
+

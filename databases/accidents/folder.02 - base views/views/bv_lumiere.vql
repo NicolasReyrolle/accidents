@@ -1,0 +1,27 @@
+﻿CREATE OR REPLACE WRAPPER DF bv_accidents_lumiere
+    FOLDER = '/02 - base views'
+    DATASOURCENAME=ds_accidents_lumiere
+    OUTPUTSCHEMA (
+        code = 'code' (OPT),
+        description = 'description' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_lumiere I18N us_pst (
+        code:text, 
+        description:text
+    )
+    FOLDER = '/02 - base views'
+    PRIMARY KEY ( 'code' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_accidents_lumiere(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD code (=,in) OPT ANY
+             ADD description (=,in) OPT ANY
+        )
+        OUTPUTLIST (code, description
+        )
+        WRAPPER (df bv_accidents_lumiere)
+    );
+

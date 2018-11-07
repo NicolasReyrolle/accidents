@@ -1,0 +1,57 @@
+﻿CREATE OR REPLACE WRAPPER DF bv_accidents_usagers
+    FOLDER = '/02 - base views'
+    DATASOURCENAME=ds_accidents_usagers
+    OUTPUTSCHEMA (
+        num_acc = 'Num_Acc' (OPT),
+        place = 'place' (OPT),
+        catu = 'catu' (OPT),
+        grav = 'grav' (OPT),
+        sexe = 'sexe' (OPT),
+        trajet = 'trajet' (OPT),
+        secu = 'secu' (OPT),
+        locp = 'locp' (OPT),
+        actp = 'actp' (OPT),
+        etatp = 'etatp' (OPT),
+        an_nais = 'an_nais' (OPT),
+        num_veh = 'num_veh' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_usagers I18N us_pst (
+        num_acc:text, 
+        place:text, 
+        catu:text, 
+        grav:text, 
+        sexe:text, 
+        trajet:text, 
+        secu:text, 
+        locp:text, 
+        actp:text, 
+        etatp:text, 
+        an_nais:text, 
+        num_veh:text
+    )
+    FOLDER = '/02 - base views'
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD bv_accidents_usagers(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD num_acc (=,in) OPT ANY
+             ADD place (=,in) OPT ANY
+             ADD catu (=,in) OPT ANY
+             ADD grav (=,in) OPT ANY
+             ADD sexe (=,in) OPT ANY
+             ADD trajet (=,in) OPT ANY
+             ADD secu (=,in) OPT ANY
+             ADD locp (=,in) OPT ANY
+             ADD actp (=,in) OPT ANY
+             ADD etatp (=,in) OPT ANY
+             ADD an_nais (=,in) OPT ANY
+             ADD num_veh (=,in) OPT ANY
+        )
+        OUTPUTLIST (actp, an_nais, catu, etatp, grav, locp, num_acc, num_veh, place, secu, sexe, trajet
+        )
+        WRAPPER (df bv_accidents_usagers)
+    );
+

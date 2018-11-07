@@ -1,0 +1,5 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JSON ds_communes
+    FOLDER = '/01 - data sources'
+    ROUTE LOCAL 'LocalConnection' '${databases.accidents.folder.01 - data sources.datasources.json.ds_communes.ROUTE.LOCAL.PATH}';
+

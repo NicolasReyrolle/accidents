@@ -1,0 +1,49 @@
+﻿CREATE OR REPLACE WRAPPER DF bv_vehicules
+    FOLDER = '/02 - base views'
+    DATASOURCENAME=ds_accidents_vehicules
+    OUTPUTSCHEMA (
+        num_acc = 'Num_Acc' (OPT),
+        senc = 'senc' (OPT),
+        catv = 'catv' (OPT),
+        occutc = 'occutc' (OPT),
+        obs = 'obs' (OPT),
+        obsm = 'obsm' (OPT),
+        choc = 'choc' (OPT),
+        manv = 'manv' (OPT),
+        num_veh = 'num_veh' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_vehicules I18N us_pst (
+        num_acc:text, 
+        senc:text, 
+        catv:text, 
+        occutc:text, 
+        obs:text, 
+        obsm:text, 
+        choc:text, 
+        manv:text, 
+        num_veh:text
+    )
+    FOLDER = '/02 - base views'
+    PRIMARY KEY ( 'num_acc' , 'num_veh' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD bv_vehicules(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD num_acc (=,in) OPT ANY
+             ADD senc (=,in) OPT ANY
+             ADD catv (=,in) OPT ANY
+             ADD occutc (=,in) OPT ANY
+             ADD obs (=,in) OPT ANY
+             ADD obsm (=,in) OPT ANY
+             ADD choc (=,in) OPT ANY
+             ADD manv (=,in) OPT ANY
+             ADD num_veh (=,in) OPT ANY
+        )
+        OUTPUTLIST (catv, choc, manv, num_acc, num_veh, obs, obsm, occutc, senc
+        )
+        WRAPPER (df bv_vehicules)
+    );
+

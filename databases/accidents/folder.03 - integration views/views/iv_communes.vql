@@ -1,0 +1,10 @@
+﻿CREATE OR REPLACE VIEW iv_communes FOLDER = '/03 - integration views'
+    PRIMARY KEY ( 'code_commune' ) AS SELECT DISTINCT (fields).code_commune_insee AS code_commune, propercase((fields).nom_de_la_commune) AS nom_commune, replace(regexp(array_to_string(',', (fields).coordonnees_gps), '(.*),', ''), '}}', '') AS longitude, replace(regexp(array_to_string(',', (fields).coordonnees_gps), ',(.*)', ''), '{{', '') AS latitude FROM FLATTEN bv_communes AS v ( v.jsonarray);
+
+ALTER VIEW iv_communes
+ LAYOUT (bv_communes = [20, 20, 429, 346]);
+
+ALTER VIEW iv_communes
+
+    DECLARE CACHE INDEX uk_commune UNIQUE  ON (code_commune);
+

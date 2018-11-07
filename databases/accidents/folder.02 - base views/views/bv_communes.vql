@@ -1,0 +1,85 @@
+﻿CREATE OR REPLACE WRAPPER JSON ds_communes
+    FOLDER = '/02 - base views'
+    DATASOURCENAME=ds_communes
+    TUPLEROOT '/JSONFile'
+    OUTPUTSCHEMA (jsonfile = 'JSONFile' : REGISTER OF (
+        jsonarray = 'JSONArray' : ARRAY OF (
+            jsonarray = 'JSONArray' : REGISTER OF (
+                datasetid = 'datasetid' : 'java.lang.String',
+                recordid = 'recordid' : 'java.lang.String',
+                fields = 'fields' : REGISTER OF (
+                    nom_de_la_commune = 'nom_de_la_commune' : 'java.lang.String',
+                    libell_d_acheminement = 'libell_d_acheminement' : 'java.lang.String',
+                    code_postal = 'code_postal' : 'java.lang.String',
+                    coordonnees_gps = 'coordonnees_gps' : ARRAY OF (
+                        coordonnees_gps = 'coordonnees_gps' : REGISTER OF (
+                            field_0 = 'field_0' : 'java.lang.Double'
+                        )
+                    ),
+                    code_commune_insee = 'code_commune_insee' : 'java.lang.String',
+                    ligne_5 = 'ligne_5' : 'java.lang.String'
+                ),
+                geometry = 'geometry' : REGISTER OF (
+                    type = 'type' : 'java.lang.String',
+                    coordinates = 'coordinates' : ARRAY OF (
+                        coordinates = 'coordinates' : REGISTER OF (
+                            field_0 = 'field_0' : 'java.lang.Double'
+                        )
+                    )
+                ),
+                record_timestamp = 'record_timestamp' : 'java.lang.String'
+            )
+        )
+    )
+    );
+
+CREATE OR REPLACE TYPE ds_communes_jsonarray_jsonarray_fields_coordonnees_gps_coordonnees_gps AS REGISTER OF (field_0:double);
+
+CREATE OR REPLACE TYPE ds_communes_jsonarray_jsonarray_fields_coordonnees_gps AS ARRAY OF ds_communes_jsonarray_jsonarray_fields_coordonnees_gps_coordonnees_gps;
+
+CREATE OR REPLACE TYPE ds_communes_jsonarray_jsonarray_fields AS REGISTER OF (nom_de_la_commune:text, libell_d_acheminement:text, code_postal:text, coordonnees_gps:ds_communes_jsonarray_jsonarray_fields_coordonnees_gps, code_commune_insee:text, ligne_5:text);
+
+CREATE OR REPLACE TYPE ds_communes_jsonarray_jsonarray_geometry_coordinates_coordinates AS REGISTER OF (field_0:double);
+
+CREATE OR REPLACE TYPE ds_communes_jsonarray_jsonarray_geometry_coordinates AS ARRAY OF ds_communes_jsonarray_jsonarray_geometry_coordinates_coordinates;
+
+CREATE OR REPLACE TYPE ds_communes_jsonarray_jsonarray_geometry AS REGISTER OF (type:text, coordinates:ds_communes_jsonarray_jsonarray_geometry_coordinates);
+
+CREATE OR REPLACE TYPE ds_communes_jsonarray_jsonarray AS REGISTER OF (datasetid:text, recordid:text, fields:ds_communes_jsonarray_jsonarray_fields, geometry:ds_communes_jsonarray_jsonarray_geometry, record_timestamp:text);
+
+CREATE OR REPLACE TYPE ds_communes_jsonarray AS ARRAY OF ds_communes_jsonarray_jsonarray;
+
+CREATE OR REPLACE TABLE bv_communes I18N us_pst (
+        jsonarray:ds_communes_jsonarray
+    )
+    FOLDER = '/02 - base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_communes(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD jsonarray NOS ZERO ()
+             ADD jsonarray NOS ZERO ()
+             ADD jsonarray.datasetid NOS ZERO ()
+             ADD jsonarray.recordid NOS ZERO ()
+             ADD jsonarray.fields NOS ZERO ()
+             ADD jsonarray.fields.nom_de_la_commune NOS ZERO ()
+             ADD jsonarray.fields.libell_d_acheminement NOS ZERO ()
+             ADD jsonarray.fields.code_postal NOS ZERO ()
+             ADD jsonarray.fields.coordonnees_gps NOS ZERO ()
+             ADD jsonarray.fields.coordonnees_gps NOS ZERO ()
+             ADD jsonarray.fields.coordonnees_gps.field_0 NOS ZERO ()
+             ADD jsonarray.fields.code_commune_insee NOS ZERO ()
+             ADD jsonarray.fields.ligne_5 NOS ZERO ()
+             ADD jsonarray.geometry NOS ZERO ()
+             ADD jsonarray.geometry.type NOS ZERO ()
+             ADD jsonarray.geometry.coordinates NOS ZERO ()
+             ADD jsonarray.geometry.coordinates NOS ZERO ()
+             ADD jsonarray.geometry.coordinates.field_0 NOS ZERO ()
+             ADD jsonarray.record_timestamp NOS ZERO ()
+        )
+        OUTPUTLIST (jsonarray
+        )
+        WRAPPER (json ds_communes)
+    );
+
