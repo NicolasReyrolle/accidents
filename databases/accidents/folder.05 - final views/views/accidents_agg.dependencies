@@ -18,4 +18,4 @@
 /databases/accidents/folder.01 - data sources/datasources/json/ds_communes.vql
 /databases/accidents/folder.02 - base views/views/bv_communes.vql
 /databases/accidents/folder.03 - integration views/views/iv_communes.vql
-/databases/accidents/folder.04 - derived views/views/accidents.vql
+/databases/accidents/folder.04 - derived views/views/accident.vql

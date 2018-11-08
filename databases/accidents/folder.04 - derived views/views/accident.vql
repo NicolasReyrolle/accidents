@@ -1,10 +1,10 @@
-﻿CREATE OR REPLACE VIEW accidents FOLDER = '/04 - derived views'
+﻿CREATE OR REPLACE VIEW accident FOLDER = '/04 - derived views'
     PRIMARY KEY ( 'num_acc' ) AS SELECT iv_accidents.num_acc AS num_acc, iv_accidents.adresse AS adresse, coalesce(iv_accidents.latitude, iv_communes.latitude) AS latitude, coalesce(iv_accidents.longitude, iv_communes.longitude) AS longitude, iv_accidents.departement AS departement, iv_accidents.luminosite AS luminosite, iv_accidents.accident_timestamp AS accident_timestamp, iv_accidents.intersection AS intersection, iv_accidents.agglomeration_indicateur AS agglomeration_indicateur, iv_accidents.meteo AS meteo, iv_accidents.collision_type AS collision_type, iv_accidents.code_commune AS code_commune, iv_communes.nom_commune AS nom_commune, getyear(iv_accidents.accident_timestamp) AS accident_annee FROM iv_accidents AS iv_accidents LEFT OUTER JOIN iv_communes AS iv_communes ON iv_accidents.code_commune = iv_communes.code_commune ;
 
-ALTER VIEW accidents
+ALTER VIEW accident
  LAYOUT (iv_accidents = [20, 20, 200, 225], iv_communes = [500, 144, 200, 106]);
 
-ALTER VIEW accidents
+ALTER VIEW accident
 
     DECLARE CACHE INDEX uk_accidents ON (num_acc);
 

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW vehicule FOLDER = '/04 - derived views' AS SELECT iv_vehicule.num_acc AS num_acc, iv_vehicule.num_veh AS num_veh, iv_vehicule.categorie_vehicule AS categorie_vehicule FROM iv_vehicule;
+
+ALTER VIEW vehicule
+ LAYOUT (iv_vehicule = [20, 20, 219, 206]);
+
