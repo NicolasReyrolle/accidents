@@ -1,0 +1,31 @@
+﻿CREATE OR REPLACE WRAPPER DF bv_action_pieton
+    FOLDER = '/02 - base views'
+    DATASOURCENAME=ds_accidents_action_pieton
+    OUTPUTSCHEMA (
+        code = 'code' (OPT),
+        description = 'description' (OPT),
+        regroupement = 'regroupement' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_action_pieton I18N us_pst (
+        code:text, 
+        description:text, 
+        regroupement:text
+    )
+    FOLDER = '/02 - base views'
+    PRIMARY KEY ( 'code' )
+    CACHE OFF
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_action_pieton(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD code (=,in) OPT ANY
+             ADD description (=,in) OPT ANY
+             ADD regroupement (=,in) OPT ANY
+        )
+        OUTPUTLIST (code, description, regroupement
+        )
+        WRAPPER (df bv_action_pieton)
+    );
+

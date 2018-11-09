@@ -1,5 +1,5 @@
 ﻿CREATE OR REPLACE VIEW iv_vehicule FOLDER = '/03 - integration views'
-    PRIMARY KEY ( 'num_acc' , 'num_veh' ) AS SELECT bv_vehicules.num_acc AS num_acc, bv_vehicules.senc AS senc, bv_vehicules.occutc AS occutc, bv_vehicules.obs AS obs, bv_vehicules.obsm AS obsm, bv_vehicules.choc AS choc, bv_vehicules.manv AS manv, bv_vehicules.num_veh AS num_veh, bv_categorie_vehicule.description AS categorie_vehicule FROM bv_vehicules AS bv_vehicules LEFT OUTER JOIN bv_categorie_vehicule AS bv_categorie_vehicule ON bv_vehicules.catv = bv_categorie_vehicule.code ;
+    PRIMARY KEY ( 'num_acc' , 'num_veh' ) AS SELECT bv_vehicules.num_acc AS num_acc, bv_vehicules.senc AS senc, bv_vehicules.occutc AS occutc, bv_vehicules.obs AS obs, bv_vehicules.obsm AS obsm, bv_vehicules.choc AS choc, bv_vehicules.manv AS manv, bv_vehicules.num_veh AS num_veh, bv_categorie_vehicule.description AS categorie_vehicule FROM bv_vehicules AS bv_vehicules LEFT OUTER JOIN bv_categorie_vehicule AS bv_categorie_vehicule ON bv_vehicules.catv = bv_categorie_vehicule.code  CONTEXT (QUERYPLAN = iv_vehicule : MERGE ANY, DATAMOVEMENTPLAN = bv_categorie_vehicule : OFF);
 
 ALTER VIEW iv_vehicule
  LAYOUT (bv_vehicules = [20, 20, 200, 206], bv_categorie_vehicule = [486, 76, 200, 66]);
