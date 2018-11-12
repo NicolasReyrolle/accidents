@@ -15,6 +15,7 @@
 /databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_collision.vql
 /databases/accidents/folder.02 - base views/views/bv_collision_type.vql
 /databases/accidents/folder.03 - integration views/views/iv_accidents.vql
+/extensions/jars/denodo-xtrafuncs-vdp-string-7.0.vql
 /databases/accidents/folder.01 - data sources/datasources/json/ds_communes.vql
 /databases/accidents/folder.02 - base views/views/bv_communes.vql
 /databases/accidents/folder.03 - integration views/views/iv_communes.vql
@@ -73,4 +74,9 @@
 /databases/accidents/folder.03 - integration views/views/iv_vehicule.vql
 /databases/accidents/folder.04 - derived views/views/dv_vehicule.vql
 /databases/accidents/folder.06 - interfaces/views/vehicule.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_departement.vql
+/databases/accidents/folder.02 - base views/views/bv_departement.vql
+/databases/accidents/folder.04 - derived views/views/dv_departement.vql
+/databases/accidents/folder.06 - interfaces/views/departement.vql
+/databases/accidents/folder.04 - derived views/views/dv_commune.vql
 /databases/accidents/folder.06 - interfaces/views/commune.vql

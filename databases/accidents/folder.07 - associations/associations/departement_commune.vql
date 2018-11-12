@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION departement_commune REFERENTIAL CONSTRAINT 
+FOLDER = '/07 - associations'
+    ENDPOINT contains_cities departement PRINCIPAL (1)
+    ENDPOINT belongs_to_departement commune (0,*)
+    ADD MAPPING code_departement=code_departement;
+
+ALTER ASSOCIATION departement_commune
+ LAYOUT (departement = [70, 260, 200, 81], commune = [520, 270, 200, 101]);
+

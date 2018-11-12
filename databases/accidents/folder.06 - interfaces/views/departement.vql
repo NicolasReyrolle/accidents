@@ -1,0 +1,10 @@
+﻿CREATE OR REPLACE INTERFACE VIEW departement (
+        code_departement:text,
+        nom_departement:text
+    )
+    SET IMPLEMENTATION dv_departement
+    FOLDER = '/06 - interfaces';
+
+ALTER VIEW departement
+ LAYOUT (dv_departement = [540, 20, 223, 66]);
+

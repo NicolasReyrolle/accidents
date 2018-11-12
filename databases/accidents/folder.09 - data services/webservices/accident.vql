@@ -74,12 +74,17 @@
             manoeuvre : 'text', 
             type_manoeuvre : 'text'
         ),
+        VIEW departement FIELDS (
+            code_departement : 'text', 
+            nom_departement : 'text'
+        ),
         VIEW commune FIELDS (
             code_commune : 'text', 
-            nom_commune : 'text'
+            nom_commune : 'text', 
+            code_departement : 'text'
         )
     )
-    ASSOCIATIONS ( accident_lieu, accident_usager, accident_vehicule, commune_accident )
+    ASSOCIATIONS ( accident_lieu, accident_usager, accident_vehicule, commune_accident, departement_commune )
     OPTIONS ( NULLVALUESASEMPTYXMLELEMENTS = false ) 
     OPENAPI2 ( API_VERSION = '1.0.0' ) 
     FOLDER = '/09 - data services';

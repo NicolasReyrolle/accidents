@@ -1,13 +1,15 @@
 ﻿CREATE OR REPLACE INTERFACE VIEW commune (
         code_commune:text,
-        nom_commune:text
+        nom_commune:text,
+        code_departement:text
     )
-    SET IMPLEMENTATION iv_communes(
+    SET IMPLEMENTATION dv_commune(
         code_commune = code_commune,
-        nom_commune = nom_commune    
+        nom_commune = nom_commune,
+        code_departement = code_departement    
 )
     FOLDER = '/06 - interfaces';
 
 ALTER VIEW commune
- LAYOUT (iv_communes = [466, 20, 204, 106]);
+ LAYOUT (dv_commune = [415, 39, 200, 106]);
 

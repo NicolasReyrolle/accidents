@@ -1,0 +1,38 @@
+﻿CREATE OR REPLACE WRAPPER DF bv_departement
+    FOLDER = '/02 - base views'
+    DATASOURCENAME=ds_departement
+    OUTPUTSCHEMA (
+        region = 'REGION' (OPT),
+        dep = 'DEP' (OPT),
+        cheflieu = 'CHEFLIEU' (OPT),
+        tncc = 'TNCC' (OPT),
+        ncc = 'NCC' (OPT),
+        nccenr = 'NCCENR' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_departement I18N us_pst (
+        region:text, 
+        dep:text, 
+        cheflieu:text, 
+        tncc:text, 
+        ncc:text, 
+        nccenr:text
+    )
+    FOLDER = '/02 - base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_departement(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD region (=,in) OPT ANY
+             ADD dep (=,in) OPT ANY
+             ADD cheflieu (=,in) OPT ANY
+             ADD tncc (=,in) OPT ANY
+             ADD ncc (=,in) OPT ANY
+             ADD nccenr (=,in) OPT ANY
+        )
+        OUTPUTLIST (cheflieu, dep, ncc, nccenr, region, tncc
+        )
+        WRAPPER (df bv_departement)
+    );
+
