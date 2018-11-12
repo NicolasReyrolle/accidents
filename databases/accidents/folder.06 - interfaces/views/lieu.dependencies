@@ -1,0 +1,25 @@
+﻿/databases/accidents/folder.06 - interfaces/06 - interfaces.vql
+/databases/accidents/folder.04 - derived views/04 - derived views.vql
+/databases/accidents/folder.03 - integration views/03 - integration views.vql
+/databases/accidents/folder.02 - base views/02 - base views.vql
+/databases/accidents/folder.01 - data sources/01 - data sources.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_lieux.vql
+/databases/accidents/folder.02 - base views/views/bv_lieux.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_categorie_route.vql
+/databases/accidents/folder.02 - base views/views/bv_categorie_route.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_regime_circulation.vql
+/databases/accidents/folder.02 - base views/views/bv_regime_circulation.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_voie_reservee.vql
+/databases/accidents/folder.02 - base views/views/bv_voie_reservee.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_profil.vql
+/databases/accidents/folder.02 - base views/views/bv_profil.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_plan.vql
+/databases/accidents/folder.02 - base views/views/bv_plan.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_etat_surface.vql
+/databases/accidents/folder.02 - base views/views/bv_etat_surface.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_infrastructure.vql
+/databases/accidents/folder.02 - base views/views/bv_infrastructure.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_situation_accident.vql
+/databases/accidents/folder.02 - base views/views/bv_situation_accident.vql
+/databases/accidents/folder.03 - integration views/views/iv_lieux.vql
+/databases/accidents/folder.04 - derived views/views/dv_lieu.vql

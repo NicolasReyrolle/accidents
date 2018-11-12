@@ -1,8 +1,13 @@
-﻿/databases/accidents/folder.05 - final views/05 - final views.vql
-/databases/accidents/folder.04 - derived views/04 - derived views.vql
+﻿/databases/accidents/folder.07 - associations/07 - associations.vql
+/databases/accidents/folder.06 - interfaces/06 - interfaces.vql
 /databases/accidents/folder.03 - integration views/03 - integration views.vql
 /databases/accidents/folder.02 - base views/02 - base views.vql
 /databases/accidents/folder.01 - data sources/01 - data sources.vql
+/databases/accidents/folder.01 - data sources/datasources/json/ds_communes.vql
+/databases/accidents/folder.02 - base views/views/bv_communes.vql
+/databases/accidents/folder.03 - integration views/views/iv_communes.vql
+/databases/accidents/folder.06 - interfaces/views/commune.vql
+/databases/accidents/folder.04 - derived views/04 - derived views.vql
 /databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_caracteristiques.vql
 /databases/accidents/folder.02 - base views/views/bv_caracteristiques.vql
 /databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_lumiere.vql
@@ -14,7 +19,5 @@
 /databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_collision.vql
 /databases/accidents/folder.02 - base views/views/bv_collision_type.vql
 /databases/accidents/folder.03 - integration views/views/iv_accidents.vql
-/databases/accidents/folder.01 - data sources/datasources/json/ds_communes.vql
-/databases/accidents/folder.02 - base views/views/bv_communes.vql
-/databases/accidents/folder.03 - integration views/views/iv_communes.vql
 /databases/accidents/folder.04 - derived views/views/dv_accident.vql
+/databases/accidents/folder.06 - interfaces/views/accident.vql

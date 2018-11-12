@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION accident_vehicule REFERENTIAL CONSTRAINT 
+FOLDER = '/07 - associations'
+    ENDPOINT implies_vehicule accident PRINCIPAL (1)
+    ENDPOINT is_implied_in_accident vehicule (0,*)
+    ADD MAPPING num_acc=num_acc;
+
+ALTER ASSOCIATION accident_vehicule
+ LAYOUT (accident = [231, 233, 200, 225], vehicule = [686, 242, 200, 225]);
+

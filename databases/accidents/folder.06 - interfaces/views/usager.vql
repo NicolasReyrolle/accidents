@@ -1,0 +1,23 @@
+﻿CREATE OR REPLACE INTERFACE VIEW usager (
+        num_acc:text (sourcetypesize = '12', sourcetypeid = '1'),
+        sexe:text,
+        annee_naissance:text,
+        num_veh:text (sourcetypesize = '3', sourcetypeid = '1'),
+        categorie_usager:text,
+        gravite:text,
+        motif_deplacement:text,
+        equipement_securite:text,
+        presence_equipement:text,
+        groupe_pieton:text,
+        action_pieton_groupe:text,
+        action_pieton:text,
+        localisation_pieton_groupe:text,
+        localisation_pieton:text,
+        place:text
+    )
+    SET IMPLEMENTATION dv_usager
+    FOLDER = '/06 - interfaces';
+
+ALTER VIEW usager
+ LAYOUT (dv_usager = [583, 31, 241, 298]);
+

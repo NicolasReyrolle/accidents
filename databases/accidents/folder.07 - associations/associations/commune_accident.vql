@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION commune_accident REFERENTIAL CONSTRAINT 
+FOLDER = '/07 - associations'
+    ENDPOINT has_accidents commune (0,*)
+    ENDPOINT occurs_at accident PRINCIPAL (1)
+    ADD MAPPING code_commune=code_commune;
+
+ALTER ASSOCIATION commune_accident
+ LAYOUT (commune = [90, 80, 200, 81], accident = [510, 40, 200, 225]);
+

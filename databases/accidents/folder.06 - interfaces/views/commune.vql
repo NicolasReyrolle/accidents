@@ -1,0 +1,13 @@
+﻿CREATE OR REPLACE INTERFACE VIEW commune (
+        code_commune:text,
+        nom_commune:text
+    )
+    SET IMPLEMENTATION iv_communes(
+        code_commune = code_commune,
+        nom_commune = nom_commune    
+)
+    FOLDER = '/06 - interfaces';
+
+ALTER VIEW commune
+ LAYOUT (iv_communes = [466, 20, 204, 106]);
+

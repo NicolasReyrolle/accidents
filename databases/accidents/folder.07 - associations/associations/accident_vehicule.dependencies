@@ -1,4 +1,5 @@
-﻿/databases/accidents/folder.05 - final views/05 - final views.vql
+﻿/databases/accidents/folder.07 - associations/07 - associations.vql
+/databases/accidents/folder.06 - interfaces/06 - interfaces.vql
 /databases/accidents/folder.04 - derived views/04 - derived views.vql
 /databases/accidents/folder.03 - integration views/03 - integration views.vql
 /databases/accidents/folder.02 - base views/02 - base views.vql
@@ -18,3 +19,19 @@
 /databases/accidents/folder.02 - base views/views/bv_communes.vql
 /databases/accidents/folder.03 - integration views/views/iv_communes.vql
 /databases/accidents/folder.04 - derived views/views/dv_accident.vql
+/databases/accidents/folder.06 - interfaces/views/accident.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_vehicules.vql
+/databases/accidents/folder.02 - base views/views/bv_vehicules.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_obstacle_fixe.vql
+/databases/accidents/folder.02 - base views/views/bv_obstacle_fixe.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_obstacle_mobile.vql
+/databases/accidents/folder.02 - base views/views/bv_obstacle_mobile.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_categorie_vehicule.vql
+/databases/accidents/folder.02 - base views/views/bv_categorie_vehicule.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_manoeuvre.vql
+/databases/accidents/folder.02 - base views/views/bv_manoeuvre.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_point_choc.vql
+/databases/accidents/folder.02 - base views/views/bv_point_choc.vql
+/databases/accidents/folder.03 - integration views/views/iv_vehicule.vql
+/databases/accidents/folder.04 - derived views/views/dv_vehicule.vql
+/databases/accidents/folder.06 - interfaces/views/vehicule.vql

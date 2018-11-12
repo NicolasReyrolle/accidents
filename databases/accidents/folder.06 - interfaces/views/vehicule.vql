@@ -1,0 +1,18 @@
+﻿CREATE OR REPLACE INTERFACE VIEW vehicule (
+        num_acc:text (sourcetypesize = '12', sourcetypeid = '1'),
+        num_veh:text (sourcetypesize = '3', sourcetypeid = '1'),
+        categorie_vehicule:text,
+        sens_circulation:text,
+        nombre_occupants:int (description = 'Nombre d''occupants des véhicules de transport en commun'),
+        obstacle_mobile:text,
+        obstacle_fixe:text,
+        point_choc:text,
+        manoeuvre:text,
+        type_manoeuvre:text
+    )
+    SET IMPLEMENTATION dv_vehicule
+    FOLDER = '/06 - interfaces';
+
+ALTER VIEW vehicule
+ LAYOUT (dv_vehicule = [500, 51, 223, 226]);
+

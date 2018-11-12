@@ -1,0 +1,24 @@
+﻿CREATE OR REPLACE INTERFACE VIEW lieu (
+        num_acc:text,
+        numero_route:text,
+        nombre_voies:text,
+        borne_rattachement:text,
+        borne_distance:text,
+        profil:text,
+        trace_plan:text,
+        etat_surface:text,
+        largeur_terre_plein:int,
+        largeur_route:int,
+        infrastructure:text,
+        proximite_ecole:int,
+        categorie_route:text,
+        voie_reservee:text,
+        regime_circulation:text,
+        situation_accident:text
+    )
+    SET IMPLEMENTATION dv_lieu
+    FOLDER = '/06 - interfaces';
+
+ALTER VIEW lieu
+ LAYOUT (dv_lieu = [490, 20, 205, 298]);
+

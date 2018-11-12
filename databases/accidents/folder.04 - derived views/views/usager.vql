@@ -1,5 +1,0 @@
-﻿CREATE OR REPLACE VIEW usager FOLDER = '/04 - derived views' AS SELECT iv_usagers.num_acc AS num_acc, iv_usagers.sexe AS sexe, iv_usagers.annee_naissance AS annee_naissance, iv_usagers.num_veh AS num_veh, iv_usagers.categorie_usager AS categorie_usager, iv_usagers.gravite AS gravite, iv_usagers.motif_deplacement AS motif_deplacement, iv_usagers.equipement_securite AS equipement_securite, iv_usagers.presence_equipement AS presence_equipement, iv_usagers.groupe_pieton AS groupe_pieton, iv_usagers.action_pieton_groupe AS action_pieton_groupe, iv_usagers.action_pieton AS action_pieton, iv_usagers.localisation_pieton_groupe AS localisation_pieton_groupe, iv_usagers.localisation_pieton AS localisation_pieton, iv_usagers.place AS place FROM iv_usagers;
-
-ALTER VIEW usager
- LAYOUT (iv_usagers = [20, 20, 217, 105]);
-

@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION accident_lieu REFERENTIAL CONSTRAINT 
+FOLDER = '/07 - associations'
+    ENDPOINT accident_has_occurred accident PRINCIPAL (1)
+    ENDPOINT occurs_at lieu (1)
+    ADD MAPPING num_acc=num_acc;
+
+ALTER ASSOCIATION accident_lieu
+ LAYOUT (accident = [121, 78, 200, 225], lieu = [480, 80, 200, 225]);
+

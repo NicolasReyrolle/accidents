@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW dv_lieu FOLDER = '/04 - derived views'
+    PRIMARY KEY ( 'num_acc' ) AS SELECT iv_lieux.num_acc AS num_acc, iv_lieux.numero_route AS numero_route, iv_lieux.nombre_voies AS nombre_voies, iv_lieux.borne_rattachement AS borne_rattachement, iv_lieux.borne_distance AS borne_distance, iv_lieux.profil AS profil, iv_lieux.trace_plan AS trace_plan, iv_lieux.etat_surface AS etat_surface, iv_lieux.largeur_terre_plein AS largeur_terre_plein, iv_lieux.largeur_route AS largeur_route, iv_lieux.infrastructure AS infrastructure, iv_lieux.proximite_ecole AS proximite_ecole, iv_lieux.categorie_route AS categorie_route, iv_lieux.voie_reservee AS voie_reservee, iv_lieux.regime_circulation AS regime_circulation, iv_lieux.situation_accident AS situation_accident FROM iv_lieux;
+
+ALTER VIEW dv_lieu
+ LAYOUT (iv_lieux = [20, 20, 230, 346]);
+

@@ -1,0 +1,22 @@
+﻿CREATE OR REPLACE INTERFACE VIEW accident (
+        num_acc:text,
+        adresse:text,
+        latitude:text,
+        longitude:text,
+        departement:text,
+        luminosite:text (description = 'Conditions de luminosité'),
+        accident_timestamp:timestamp,
+        intersection:text (description = 'Type d''intersection'),
+        agglomeration_indicateur:text (description = 'En ou hors agglomération'),
+        meteo:text,
+        collision_type:text,
+        code_commune:text,
+        nom_commune:text,
+        accident_annee:long
+    )
+    SET IMPLEMENTATION dv_accident
+    FOLDER = '/06 - interfaces';
+
+ALTER VIEW accident
+ LAYOUT (dv_accident = [574, 24, 298, 298]);
+

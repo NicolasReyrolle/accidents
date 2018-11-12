@@ -1,0 +1,86 @@
+﻿CREATE OR REPLACE REST WEBSERVICE accident
+    CONNECTION (
+        CHUNKSIZE = 1000
+        CHUNKTIMEOUT = 90000
+        QUERYTIMEOUT = 900000
+        POOLENABLED = true
+        POOLINITSIZE = 0
+        POOLMAXACTIVE = 30
+    )
+    DEFAULTREPRESENTATION = HTML
+    SUPPORTEDREPRESENTATIONS (HTML, XML, JSON)    AUTHENTICATION (BASIC VDP )
+
+    RESOURCES (
+        VIEW accident FIELDS (
+            num_acc : 'text', 
+            adresse : 'text', 
+            latitude : 'text', 
+            longitude : 'text', 
+            departement : 'text', 
+            luminosite : 'text', 
+            accident_timestamp : 'timestamp', 
+            intersection : 'text', 
+            agglomeration_indicateur : 'text', 
+            meteo : 'text', 
+            collision_type : 'text', 
+            code_commune : 'text', 
+            nom_commune : 'text', 
+            accident_annee : 'long'
+        ),
+        VIEW lieu FIELDS (
+            num_acc : 'text', 
+            numero_route : 'text', 
+            nombre_voies : 'text', 
+            borne_rattachement : 'text', 
+            borne_distance : 'text', 
+            profil : 'text', 
+            trace_plan : 'text', 
+            etat_surface : 'text', 
+            largeur_terre_plein : 'int', 
+            largeur_route : 'int', 
+            infrastructure : 'text', 
+            proximite_ecole : 'int', 
+            categorie_route : 'text', 
+            voie_reservee : 'text', 
+            regime_circulation : 'text', 
+            situation_accident : 'text'
+        ),
+        VIEW usager FIELDS (
+            num_acc : 'text', 
+            sexe : 'text', 
+            annee_naissance : 'text', 
+            num_veh : 'text', 
+            categorie_usager : 'text', 
+            gravite : 'text', 
+            motif_deplacement : 'text', 
+            equipement_securite : 'text', 
+            presence_equipement : 'text', 
+            groupe_pieton : 'text', 
+            action_pieton_groupe : 'text', 
+            action_pieton : 'text', 
+            localisation_pieton_groupe : 'text', 
+            localisation_pieton : 'text', 
+            place : 'text'
+        ),
+        VIEW vehicule FIELDS (
+            num_acc : 'text', 
+            num_veh : 'text', 
+            categorie_vehicule : 'text', 
+            sens_circulation : 'text', 
+            nombre_occupants : 'int', 
+            obstacle_mobile : 'text', 
+            obstacle_fixe : 'text', 
+            point_choc : 'text', 
+            manoeuvre : 'text', 
+            type_manoeuvre : 'text'
+        ),
+        VIEW commune FIELDS (
+            code_commune : 'text', 
+            nom_commune : 'text'
+        )
+    )
+    ASSOCIATIONS ( accident_lieu, accident_usager, accident_vehicule, commune_accident )
+    OPTIONS ( NULLVALUESASEMPTYXMLELEMENTS = false ) 
+    OPENAPI2 ( API_VERSION = '1.0.0' ) 
+    FOLDER = '/09 - data services';
+

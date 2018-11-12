@@ -1,5 +1,0 @@
-﻿CREATE OR REPLACE VIEW utilite_protections FOLDER = '/06 - reports' AS SELECT iv_usagers.equipement_securite AS equipement_securite, count(*) AS nb, iv_usagers.presence_equipement AS presence_equipement, (sum(case WHEN (iv_usagers.gravite = 'Tué') THEN 1 END)/cast('double', count(*))) AS taux_tue, (sum(case WHEN (iv_usagers.gravite = 'Blessé grave') THEN 1 END)/cast('double', count(*))) AS taux_blesse_grave, (sum(case WHEN (iv_usagers.gravite = 'Blessé léger') THEN 1 END)/cast('double', count(*))) AS taux_blesse_leger, (sum(case WHEN (iv_usagers.gravite = 'Indemne') THEN 1 END)/cast('double', count(*))) AS taux_indemne FROM iv_usagers WHERE (equipement_securite <> 'Autre' AND presence_equipement is not null ) GROUP BY iv_usagers.equipement_securite, iv_usagers.presence_equipement;
-
-ALTER VIEW utilite_protections
- LAYOUT (iv_usagers = [20, 20, 217, 286]);
-
