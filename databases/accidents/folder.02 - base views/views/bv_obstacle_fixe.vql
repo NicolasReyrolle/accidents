@@ -12,7 +12,7 @@ CREATE OR REPLACE TABLE bv_obstacle_fixe I18N us_pst (
     )
     FOLDER = '/02 - base views'
     PRIMARY KEY ( 'code' )
-    CACHE OFF
+    CACHE PARTIAL
     BATCHSIZEINCACHE DEFAULT
     TIMETOLIVEINCACHE DEFAULT
     ADD SEARCHMETHOD bv_obstacle_fixe(

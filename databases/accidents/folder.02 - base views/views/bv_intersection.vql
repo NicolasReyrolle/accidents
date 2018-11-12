@@ -12,7 +12,8 @@ CREATE OR REPLACE TABLE bv_intersection I18N us_pst (
     )
     FOLDER = '/02 - base views'
     PRIMARY KEY ( 'code' )
-    CACHE OFF
+    CACHE PARTIAL
+    BATCHSIZEINCACHE DEFAULT
     TIMETOLIVEINCACHE DEFAULT
     ADD SEARCHMETHOD ds_accidents_intersection(
         I18N us_pst

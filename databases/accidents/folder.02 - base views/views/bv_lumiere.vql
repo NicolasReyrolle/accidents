@@ -12,7 +12,8 @@ CREATE OR REPLACE TABLE bv_lumiere I18N us_pst (
     )
     FOLDER = '/02 - base views'
     PRIMARY KEY ( 'code' )
-    CACHE OFF
+    CACHE PARTIAL
+    BATCHSIZEINCACHE DEFAULT
     TIMETOLIVEINCACHE DEFAULT
     ADD SEARCHMETHOD bv_accidents_lumiere(
         I18N us_pst

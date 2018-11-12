@@ -12,7 +12,7 @@ CREATE OR REPLACE TABLE bv_etat_surface I18N us_pst (
     )
     FOLDER = '/02 - base views'
     PRIMARY KEY ( 'code' )
-    CACHE OFF
+    CACHE PARTIAL
     BATCHSIZEINCACHE DEFAULT
     TIMETOLIVEINCACHE DEFAULT
     ADD SEARCHMETHOD ds_accidents_etat_surface(

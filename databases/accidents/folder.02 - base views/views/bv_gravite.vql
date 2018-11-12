@@ -12,7 +12,7 @@ CREATE OR REPLACE TABLE bv_gravite I18N us_pst (
     )
     FOLDER = '/02 - base views'
     PRIMARY KEY ( 'code' )
-    CACHE OFF
+    CACHE PARTIAL
     BATCHSIZEINCACHE DEFAULT
     TIMETOLIVEINCACHE NOEXPIRE
     ADD SEARCHMETHOD bv_gravite(
