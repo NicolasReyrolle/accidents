@@ -1,0 +1,9 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF ds_accidents_profil
+    FOLDER = '/01 - data sources'
+    ROUTE LOCAL 'LocalConnection' '${databases.accidents.folder.01 - data sources.datasources.df.ds_accidents_profil.ROUTE.LOCAL.PATH}'
+    CHARSET = 'UTF-8'
+    COLUMNDELIMITER = ';'
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = TRUE;
+

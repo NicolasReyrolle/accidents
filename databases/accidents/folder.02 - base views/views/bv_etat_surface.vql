@@ -1,0 +1,28 @@
+﻿CREATE OR REPLACE WRAPPER DF ds_accidents_etat_surface
+    FOLDER = '/02 - base views'
+    DATASOURCENAME=ds_accidents_etat_surface
+    OUTPUTSCHEMA (
+        code = 'code' (OPT),
+        description = 'description' (OPT)
+    );
+
+CREATE OR REPLACE TABLE bv_etat_surface I18N us_pst (
+        code:text, 
+        description:text
+    )
+    FOLDER = '/02 - base views'
+    PRIMARY KEY ( 'code' )
+    CACHE OFF
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_accidents_etat_surface(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD code (=,in) OPT ANY
+             ADD description (=,in) OPT ANY
+        )
+        OUTPUTLIST (code, description
+        )
+        WRAPPER (df ds_accidents_etat_surface)
+    );
+
