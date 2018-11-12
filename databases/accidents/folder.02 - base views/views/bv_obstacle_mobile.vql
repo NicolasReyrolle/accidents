@@ -1,12 +1,12 @@
-﻿CREATE OR REPLACE WRAPPER DF bv_categorie_vehicule
+﻿CREATE OR REPLACE WRAPPER DF bv_obstacle_mobile
     FOLDER = '/02 - base views'
-    DATASOURCENAME=ds_accidents_categorie_vehicule
+    DATASOURCENAME=ds_accidents_obstacle_mobile
     OUTPUTSCHEMA (
         code = 'code' (OPT),
         description = 'description' (OPT)
     );
 
-CREATE OR REPLACE TABLE bv_categorie_vehicule I18N us_pst (
+CREATE OR REPLACE TABLE bv_obstacle_mobile I18N us_pst (
         code:text, 
         description:text
     )
@@ -15,7 +15,7 @@ CREATE OR REPLACE TABLE bv_categorie_vehicule I18N us_pst (
     CACHE OFF
     BATCHSIZEINCACHE DEFAULT
     TIMETOLIVEINCACHE DEFAULT
-    ADD SEARCHMETHOD bv_categorie_vehicule(
+    ADD SEARCHMETHOD bv_obstacle_mobile(
         I18N us_pst
         CONSTRAINTS (
              ADD code (=,in) OPT ANY
@@ -23,6 +23,6 @@ CREATE OR REPLACE TABLE bv_categorie_vehicule I18N us_pst (
         )
         OUTPUTLIST (code, description
         )
-        WRAPPER (df bv_categorie_vehicule)
+        WRAPPER (df bv_obstacle_mobile)
     );
 

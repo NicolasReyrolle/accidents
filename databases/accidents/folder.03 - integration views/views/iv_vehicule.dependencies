@@ -3,5 +3,13 @@
 /databases/accidents/folder.01 - data sources/01 - data sources.vql
 /databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_vehicules.vql
 /databases/accidents/folder.02 - base views/views/bv_vehicules.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_obstacle_fixe.vql
+/databases/accidents/folder.02 - base views/views/bv_obstacle_fixe.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_obstacle_mobile.vql
+/databases/accidents/folder.02 - base views/views/bv_obstacle_mobile.vql
 /databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_categorie_vehicule.vql
 /databases/accidents/folder.02 - base views/views/bv_categorie_vehicule.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_manoeuvre.vql
+/databases/accidents/folder.02 - base views/views/bv_manoeuvre.vql
+/databases/accidents/folder.01 - data sources/datasources/df/ds_accidents_point_choc.vql
+/databases/accidents/folder.02 - base views/views/bv_point_choc.vql
