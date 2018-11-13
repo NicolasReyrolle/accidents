@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE VIEW dv_commune FOLDER = '/05 - final views' AS SELECT code_commune AS code_commune, nom_commune AS nom_commune, substr(code_commune, 1, 2) AS code_departement, count(*) AS nb_accidents FROM accident GROUP BY code_commune, nom_commune ORDER BY nom_commune ASC;
+
+ALTER VIEW dv_commune
+ LAYOUT (accident = [20, 20, 298, 306]);
+
+ALTER VIEW dv_commune
+ CACHE PARTIAL
+     BATCHSIZEINCACHE DEFAULT TIMETOLIVEINCACHE DEFAULT;
+

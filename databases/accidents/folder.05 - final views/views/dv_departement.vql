@@ -1,6 +1,10 @@
-﻿CREATE OR REPLACE VIEW dv_departement FOLDER = '/04 - derived views'
+﻿CREATE OR REPLACE VIEW dv_departement FOLDER = '/05 - final views'
     PRIMARY KEY ( 'code_departement' ) AS SELECT bv_departement.dep AS code_departement, bv_departement.nccenr AS nom_departement FROM bv_departement;
 
 ALTER VIEW dv_departement
  LAYOUT (bv_departement = [20, 20, 200, 146]);
+
+ALTER VIEW dv_departement
+ CACHE PARTIAL
+     BATCHSIZEINCACHE DEFAULT TIMETOLIVEINCACHE DEFAULT;
 

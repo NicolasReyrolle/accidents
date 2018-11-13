@@ -1,6 +1,10 @@
-﻿CREATE OR REPLACE VIEW dv_vehicule FOLDER = '/04 - derived views'
+﻿CREATE OR REPLACE VIEW dv_vehicule FOLDER = '/05 - final views'
     PRIMARY KEY ( 'num_acc' , 'num_veh' ) AS SELECT iv_vehicule.num_acc AS num_acc, iv_vehicule.num_veh AS num_veh, iv_vehicule.categorie_vehicule AS categorie_vehicule, iv_vehicule.sens_circulation AS sens_circulation, iv_vehicule.nombre_occupants AS nombre_occupants, iv_vehicule.obstacle_mobile AS obstacle_mobile, iv_vehicule.obstacle_fixe AS obstacle_fixe, iv_vehicule.point_choc AS point_choc, iv_vehicule.manoeuvre AS manoeuvre, iv_vehicule.type_manoeuvre AS type_manoeuvre FROM iv_vehicule;
 
 ALTER VIEW dv_vehicule
  LAYOUT (iv_vehicule = [20, 20, 219, 206]);
+
+ALTER VIEW dv_vehicule
+ CACHE PARTIAL
+     BATCHSIZEINCACHE DEFAULT TIMETOLIVEINCACHE DEFAULT;
 

@@ -1,5 +1,0 @@
-﻿CREATE OR REPLACE VIEW accidents_agg FOLDER = '/05 - final views' AS SELECT departement AS departement, luminosite AS luminosite, intersection AS intersection, agglomeration_indicateur AS agglomeration_indicateur, meteo AS meteo, collision_type AS collision_type, accident_annee AS accident_annee, count(*) AS nb FROM dv_accident GROUP BY departement, luminosite, intersection, agglomeration_indicateur, meteo, collision_type, accident_annee;
-
-ALTER VIEW accidents_agg
- LAYOUT (dv_accident = [20, 20, 273, 286]);
-
