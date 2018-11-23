@@ -2,7 +2,8 @@
     PRIMARY KEY ( 'num_acc' ) (
     luminosite (description = 'Conditions de luminosité'),
     intersection (description = 'Type d''intersection'),
-    agglomeration_indicateur (description = 'En ou hors agglomération')
+    agglomeration_indicateur (description = 'En ou hors agglomération'),
+    longitude (description = 'longitude')
 )
  AS SELECT bv_accidents_caracteristiques.num_acc AS num_acc, bv_accidents_caracteristiques.adr AS adresse, (cast(nullif(bv_accidents_caracteristiques.lat, '0000000') AS FLOAT)/100000) AS latitude, (cast(nullif(bv_accidents_caracteristiques.long, '0000000') AS FLOAT)/100000) AS longitude, substr(bv_accidents_caracteristiques.dep, 1, 2) AS departement, bv_accidents_lumiere.description AS luminosite, to_timestamp('yyyyMMddHHmm', concat('20', leftpad(bv_accidents_caracteristiques.an, 2, '0'), leftpad(bv_accidents_caracteristiques.mois, 2, '0'), leftpad(bv_accidents_caracteristiques.jour, 2, '0'), leftpad(bv_accidents_caracteristiques.hrmn, 4, '0'))) AS accident_timestamp, bv_accidents_intersection.description AS intersection, case agg WHEN 1 THEN 'Hors agglo.' ELSE 'En agglo.' END AS agglomeration_indicateur, bv_meteo.description AS meteo, bv_collision_type.description AS collision_type, (substr(bv_accidents_caracteristiques.dep, 1, 2)||bv_accidents_caracteristiques.com) AS code_commune FROM (((bv_caracteristiques AS bv_accidents_caracteristiques LEFT OUTER JOIN bv_lumiere AS bv_accidents_lumiere ON bv_accidents_caracteristiques.lum = bv_accidents_lumiere.code ) LEFT OUTER JOIN bv_intersection AS bv_accidents_intersection ON bv_accidents_caracteristiques.int = bv_accidents_intersection.code ) LEFT OUTER JOIN bv_meteo AS bv_meteo ON bv_accidents_caracteristiques.int = bv_meteo.code ) LEFT OUTER JOIN bv_collision_type AS bv_collision_type ON bv_accidents_caracteristiques.col = bv_collision_type.code ;
 
